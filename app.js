@@ -1,8 +1,8 @@
 const state = {
-  xp: Number(localStorage.getItem("kw_xp") || 12450),
-  coins: Number(localStorage.getItem("kw_coins") || 8750),
+  xp: Number(localStorage.getItem("kw_xp") || 0),
+  coins: Number(localStorage.getItem("kw_coins") || 0),
   lives: Number(localStorage.getItem("kw_lives") || 5),
-  streak: Number(localStorage.getItem("kw_streak") || 7),
+  streak: Number(localStorage.getItem("kw_streak") || 0),
   answered: Number(localStorage.getItem("kw_answered") || 6),
   questionIndex: Number(localStorage.getItem("kw_q") || 0),
   sound: localStorage.getItem("kw_sound") !== "off",
