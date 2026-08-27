@@ -1,9 +1,0 @@
-{
-  "name": "know-world-complete",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Juego educativo Know World con perfil, tienda, misiones, ranking, vidas y preguntas JSON.",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
