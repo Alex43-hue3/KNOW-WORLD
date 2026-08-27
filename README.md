@@ -1,71 +1,59 @@
-# KNOW WORLD — Proyecto completo y funcional
+# KNOW WORLD — Proyecto completo
 
-Esta versión amplía el proyecto para que el progreso del jugador sea persistente y conectado entre Inicio, Quiz, Perfil, Tienda, Misiones y Ranking.
+## Inicio limpio
+La primera vez que se abre esta versión se crea un perfil completamente nuevo:
+- EXP: 0
+- Monedas: 0
+- Racha: 0
+- Mejor racha: 0
+- Preguntas correctas/respondidas: 0
+- Título: Sin título
+- Ranking: última posición disponible
+- Vidas: 5/5 para comenzar a jugar
 
-## Funciones implementadas
+El nombre se solicita al entrar y puede cambiarse desde Perfil > Editar perfil.
 
-### Perfil
-- Al abrir por primera vez pide el nombre del jugador.
-- El nombre aparece en Inicio, Perfil y Ranking.
-- Desde **Editar perfil** se puede cambiar el nombre.
-- Desde Perfil se puede seleccionar un título disponible.
-- El título equipado se refleja en toda la interfaz.
+## Vidas
+- Máximo: 5.
+- Error o tiempo agotado: -1 vida.
+- Recuperación automática: 1 vida cada 30 minutos.
+- Compra por monedas: 500 monedas por vida.
+- Compra por EXP: empieza en 100 EXP y aumenta 100 por cada compra con EXP dentro de la ventana de 24 horas.
+- Después de 24 horas desde el inicio de esa ventana, el precio vuelve a 100 EXP.
+- Con 0 vidas no se puede iniciar ni continuar una pregunta. Aparece el panel para comprar o esperar.
 
-### EXP y Ranking
-- Cada respuesta correcta da **+50 EXP** y 10 monedas.
-- La posición del ranking se recalcula automáticamente con la EXP actual.
-- Comprar una vida con EXP reduce la EXP y, por lo tanto, puede bajar la posición.
-- Las recompensas de misiones también pueden aumentar la EXP y modificar el ranking.
-- Los datos se guardan en `localStorage`.
+## Tienda y colección
+Los artículos comprados se guardan en el perfil y pueden equiparse desde **Artículos adquiridos** mediante el botón **USAR**.
+- Avatares
+- Marcos
+- Fondos
+- Efectos
+- Títulos
+- Insignias
 
-### Vidas
-- Máximo: 5 vidas.
-- Al perder una vida comienza la recuperación automática.
-- Se recupera **1 vida cada 30 minutos**.
-- El contador se conserva aunque se cierre la página.
-- Se puede comprar una vida por **500 monedas**.
-- También se puede comprar por EXP:
-  - primera compra: 100 EXP
-  - segunda: 200 EXP
-  - tercera: 300 EXP
-  - y así sucesivamente +100 EXP por cada compra con EXP.
-- El precio creciente queda guardado.
+El artículo equipado se aplica visualmente al perfil y a la interfaz cuando existe una representación disponible.
 
-### Misiones diarias
-- Se reinician automáticamente cada día.
-- 10 respuestas correctas: +200 EXP y 500 monedas.
-- Racha de 10: +300 EXP.
-- 3 categorías distintas: +750 monedas.
-- Cada misión puede reclamarse una sola vez por día.
+## Preguntas
+Las preguntas se encuentran en `questions.json`.
 
-### Tienda
-- Las compras descuentan monedas.
-- Un artículo no puede comprarse dos veces.
-- Los artículos comprados aparecen en el Perfil.
-- Los títulos comprados se pueden equipar.
-- Los artículos y el saldo se conservan al cerrar el navegador.
-
-### Preguntas
-Las preguntas están en `questions.json` y se cargan desde el navegador.
-Cada pregunta tiene:
-`id`, `category`, `question`, `options`, `answer`, `explanation`.
+Formato esperado:
+```json
+{
+  "id": 1,
+  "category": "Ciencia",
+  "question": "Pregunta...",
+  "options": ["A", "B", "C", "D"],
+  "answer": 1,
+  "explanation": "Explicación..."
+}
+```
 
 ## Ejecutar
+```bash
+npm install
+npm start
+```
+Luego abrir `http://localhost:3000`.
 
-Recomendado:
-1. Instala Node.js.
-2. Abre una terminal en esta carpeta.
-3. Ejecuta:
-   `npm start`
-4. Abre:
-   `http://localhost:3000`
-
-También incluye un respaldo para poder probar el juego sin servidor, aunque para cargar/modificar el JSON correctamente se recomienda usar `npm start`.
-
-## Reiniciar todo el progreso
-
-Abre la consola del navegador y ejecuta:
-
-`localStorage.removeItem("knowWorldState"); location.reload();`
-
-Esto vuelve a pedir el nombre y restaura los valores iniciales.
+## Datos
+El progreso se guarda en `localStorage` del navegador. La versión del estado es la 3 para evitar que los datos demo de versiones anteriores aparezcan como progreso inicial.

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Know World — Explorador del Saber</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="toast" class="toast"></div>
+
+<div id="nameModal" class="modal-overlay">
+  <div class="modal panel">
+    <div class="modal-icon">🧠</div>
+    <h2>¡Bienvenido a KNOW WORLD!</h2>
+    <p>Antes de comenzar, escribe el nombre que aparecerá en tu perfil y en el ranking.</p>
+    <input id="firstName" maxlength="18" placeholder="Tu nombre" autocomplete="off">
+    <button id="saveFirstName" class="primary-btn">COMENZAR</button>
+  </div>
+</div>
+
+<div id="profileModal" class="modal-overlay hidden">
+  <div class="modal panel">
+    <button class="modal-close" data-close-modal>×</button>
+    <h2>Editar perfil</h2>
+    <label>Nombre del jugador</label>
+    <input id="editName" maxlength="18" placeholder="Tu nombre">
+    <label>Título equipado</label>
+    <select id="titleSelect"></select>
+    <div class="edit-preview">
+      <div id="previewAvatar" class="avatar">A</div>
+      <div><b id="previewName">ALEX</b><small id="previewTitle">Explorador del Saber</small></div>
+    </div>
+    <button id="saveProfile" class="primary-btn">GUARDAR CAMBIOS</button>
+  </div>
+</div>
+
+<main class="game-shell">
+<header class="topbar glass">
+  <section class="player-mini">
+    <div id="topAvatar" class="avatar">A</div>
+    <div><strong id="topName">TU NOMBRE</strong><span id="topTitle">Sin título</span><b id="topLevel">Nivel 1</b></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><span>⭐</span><div><b id="xp">12,450</b><small>EXP</small></div></div>
+    <div class="stat"><span>🪙</span><div><b id="coins">8,750</b><small>Monedas</small></div></div>
+    <div class="stat"><span>❤️</span><div><b id="lives">5/5</b><small>Vidas</small></div></div>
+    <div class="stat"><span>🏆</span><div><b id="rank">#47</b><small>Posición</small></div></div>
+  </section>
+  <section class="top-actions">
+    <button class="icon-btn" data-view="quiz" title="Jugar">⚡</button>
+    <button class="icon-btn" data-view="ranking" title="Ranking">🏆</button>
+    <button class="icon-btn" id="soundBtn" title="Sonido">🔊</button>
+  </section>
+</header>
+
+<div class="layout">
+<nav class="sidebar glass">
+  <button class="nav-btn active" data-view="home"><span>⌂</span>INICIO</button>
+  <button class="nav-btn" data-view="ranking"><span>🏆</span>RANKINGS</button>
+  <button class="nav-btn" data-view="missions"><span>🎯</span>MISIONES</button>
+  <button class="nav-btn" data-view="shop"><span>🛒</span>TIENDA</button>
+  <button class="nav-btn" data-view="profile"><span>👤</span>PERFIL</button>
+</nav>
+
+<section class="content">
+<!-- HOME -->
+<div id="homeView" class="view">
+  <div class="hero-grid">
+    <section class="hero glass">
+      <div class="brand-art">
+        <div class="planet">🌎</div><div class="brain">🧠</div>
+        <div class="brand">KNOW<br><em>WORLD</em></div>
+        <div class="stars">✦ ★ ✦</div>
+      </div>
+      <div class="season">TEMPORADA 5 <span>EL CONOCIMIENTO ES PODER</span><small id="seasonCountdown">Termina en: --:--:--</small></div>
+      <button class="play-btn" data-view="quiz">¡JUGAR! <small>⚡ DESAFÍO UNIVERSAL</small></button>
+      <div class="category-row">
+        <button data-view="quiz" class="blue-btn">CATEGORÍAS <small>Elige tu tema favorito</small></button>
+        <button data-view="missions" class="purple-btn">EVENTOS <small>Desafíos especiales</small></button>
+      </div>
+      <div id="homeLifeBuy" class="home-life-buy panel hidden">
+        <div class="no-lives-icon">❤️</div>
+        <div class="no-lives-copy">
+          <b>¡TE QUEDASTE SIN VIDAS!</b>
+          <span>Compra una vida o espera la recuperación automática para continuar jugando.</span>
+          <small id="homeLifeRecovery">+1 vida en 30:00</small>
+        </div>
+        <div class="life-buy-actions">
+          <button id="homeBuyLifeCoins" class="shop-buy">❤️ 1 VIDA — 🪙 500</button>
+          <button id="homeBuyLifeXp" class="shop-buy">❤️ 1 VIDA — ⭐ <span id="homeXpLifeCost">100</span> EXP</button>
+        </div>
+      </div>
+    </section>
+    <aside class="side-stack">
+      <div class="streak panel"><span>🔥</span><div><small>RACHA ACTUAL</small><b id="streak">x0</b><em>Mejor racha: 0</em></div></div>
+      <div class="reward panel"><div><small>SIGUIENTE RECOMPENSA</small><b>🎁</b><div class="progress"><i id="rewardProgress"></i></div><span id="rewardText">⭐ 450 / 1,000 EXP</span></div></div>
+      <div class="mission panel"><b>📋 MISIÓN DIARIA</b><span>Responde 10 preguntas correctamente</span><div class="progress"><i id="missionProgress"></i></div><strong id="missionText">0 / 10</strong><small>EXP 200　🪙 500</small></div>
+      <div class="life-recover panel">❤️ <span>RECUPERACIÓN DE VIDAS</span><b id="lifeRecoverText">Vidas completas</b></div>
+    </aside>
+  </div>
+  <section class="bottom-grid">
+    <div class="title-card panel">
+      <div class="medal">🏅</div>
+      <div><small>TÍTULO ACTUAL</small><h2 id="homeTitle">SIN TÍTULO</h2><span id="titleStatus">Aún no tienes un título</span></div>
+      <div class="next-title"><small>PRÓXIMO TÍTULO</small><b id="nextTitle">CONOCEDOR</b><div class="progress"><i id="titleProgress"></i></div><span id="titleXp">2,680 / 5,000 EXP</span></div>
+    </div>
+    <div class="quick panel">
+      <b>ESTADO DEL JUGADOR</b>
+      <div class="quick-stats"><span>❤️ <strong id="quickLives">5/5</strong></span><span>🔥 <strong id="quickStreak">x0</strong></span><span>🏆 <strong id="quickRank">#48</strong></span></div>
+      <button class="outline-btn" data-view="profile">VER / EDITAR PERFIL</button>
+    </div>
+  </section>
+</div>
+
+<!-- QUIZ -->
+<div id="quizView" class="view hidden">
+<section class="quiz-layout">
+  <div class="quiz-card panel">
+    <div class="quiz-head"><button class="back-btn" data-view="home">←</button><div><span class="fire">🔥 RACHA <b id="quizStreak">x0</b></span><span class="timer">⏱ <b id="timer">12</b>s</span></div></div>
+    <div class="difficulty">DIFICULTAD <span>■ ■ ■ ■</span></div>
+    <span class="category-pill" id="questionCategory">CIENCIA</span>
+    <h1 id="questionText">Cargando pregunta...</h1>
+    <div id="options" class="options"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <div id="noLivesQuiz" class="no-lives-quiz hidden">
+      <div class="no-lives-icon">❤️</div>
+      <h2>NO TIENES VIDAS</h2>
+      <p>Ya no puedes responder más preguntas hasta recuperar o comprar una vida.</p>
+      <b id="quizLifeRecovery">+1 vida en 30:00</b>
+      <div class="life-buy-actions">
+        <button id="quizBuyLifeCoins" class="shop-buy">❤️ COMPRAR POR 🪙 500</button>
+        <button id="quizBuyLifeXp" class="shop-buy">❤️ COMPRAR POR ⭐ <span id="quizXpLifeCost">100</span> EXP</button>
+      </div>
+      <button id="quizBackHome" class="outline-btn">← VOLVER AL INICIO</button>
+    </div>
+    <button id="nextBtn" class="next-btn hidden">Siguiente pregunta →</button>
+  </div>
+  <aside class="quiz-side">
+    <div class="reward-box panel"><small>RECOMPENSA POR ACIERTO</small><b>+50 EXP</b><b>⭐ +10</b><span>SEGUNDA OPORTUNIDAD</span><p>Si fallas, pierdes una vida. Las respuestas correctas aumentan tu racha y tu posición del ranking.</p></div>
+    <div class="help-box panel"><b>AYUDAS</b><button id="timeHelp">+5 SEGUNDOS<br><small>🪙 100</small></button><button id="removeHelp">ELIMINAR 2 OPCIONES<br><small>🪙 150</small></button></div>
+  </aside>
+</section>
+</div>
+
+<!-- PROFILE -->
+<div id="profileView" class="view hidden">
+<section class="profile-layout">
+  <div class="profile-card panel">
+    <div id="profileAvatar" class="profile-avatar avatar">A</div>
+    <h1 id="profileName">SIN NOMBRE</h1><span id="profileTitle">Sin título</span><b id="profileLevel">Nivel 1</b>
+    <button id="editProfileBtn" class="outline-btn">✏️ EDITAR PERFIL</button>
+    <div class="profile-lines">
+      <p>EXP Competitiva <strong id="profileXp">0</strong></p><p>EXP Histórica <strong id="profileHistoricalXp">0</strong></p><p>Monedas <strong id="profileCoins">0</strong></p><p>Ranking Actual <strong id="profileRank">#48</strong></p><p>Mejor racha <strong id="bestStreak">0</strong></p><p>Preguntas correctas <strong id="correctAnswers">0</strong></p><p>Preguntas respondidas <strong id="answeredTotal">0</strong></p>
+    </div>
+  </div>
+  <div class="collection panel">
+    <div class="section-title"><b>COLECCIÓN</b><span id="collectionCount">0 / 24</span></div>
+    <div class="collection-grid">
+      <button>🧑‍🚀<small>AVATARES</small></button><button>🛡️<small>MARCOS</small></button><button>🌌<small>FONDOS</small></button>
+      <button>✨<small>EFECTOS</small></button><button>🏆<small>TÍTULOS</small></button><button>🎖️<small>INSIGNIAS</small></button>
+    </div>
+    <div class="owned-box"><b>Artículos adquiridos</b><div id="ownedItems">Todavía no has comprado artículos.</div></div>
+  </div>
+  <div class="rank-card panel"><small>TÍTULO ACTUAL</small><h2 id="profileRankTitle">SIN TÍTULO</h2><div class="big-medal">🏅</div><small>PRÓXIMO TÍTULO</small><b id="profileNextTitle">CONOCEDOR</b><div class="progress"><i id="profileTitleProgress"></i></div><span id="profileTitleXp">2,680 / 5,000 EXP</span></div>
+</section>
+<section class="profile-bottom panel">
+  <div><h3>SISTEMA DE VIDAS</h3><div class="heart-big">❤️ <b id="profileLives">5/5</b></div><span id="profileRecovery">Vidas completas</span></div>
+  <div class="life-buy"><h3>COMPRAR VIDA</h3><button id="buyLifeCoins" class="shop-buy">❤️ 1 VIDA — 🪙 500</button><button id="buyLifeXp" class="shop-buy">❤️ 1 VIDA — ⭐ <span id="xpLifeCost">100</span> EXP</button><small>El precio con EXP empieza en 100 y se reinicia a 100 cada 24 horas.</small></div>
+  <div><h3>EXP Y RANGOS</h3><p>⚔️ Desafío Universal<br>⚔️ Por Categoría<br>⚔️ Duelo 1 vs 1 (Próximamente)<br>⚔️ Eventos Especiales</p></div>
+</section>
+</div>
+
+<!-- SHOP -->
+<div id="shopView" class="view hidden">
+<section class="page-head panel"><button class="back-btn" data-view="home">←</button><div><h1>TIENDA</h1><span>Los artículos comprados quedan guardados en tu perfil.</span></div><strong>🪙 <span id="shopCoins">8,750</span></strong></section>
+<div class="shop-tabs"><button class="active">DESTACADOS</button><button>AVATARES</button><button>MARCOS</button><button>FONDOS</button><button>EFECTOS</button><button>TÍTULOS</button></div>
+<section class="shop-grid">
+  <article class="item panel" data-item="Marco Fuego"><div>🔥</div><h3>Marco Fuego</h3><span>ÉPICO</span><b>🪙 2,500</b><button data-buy data-name="Marco Fuego" data-price="2500">COMPRAR</button></article>
+  <article class="item panel" data-item="Fondo Galaxia"><div>🌌</div><h3>Fondo Galaxia</h3><span>ÉPICO</span><b>🪙 4,000</b><button data-buy data-name="Fondo Galaxia" data-price="4000">COMPRAR</button></article>
+  <article class="item panel" data-item="Efecto Estrella"><div>✨</div><h3>Efecto Estrella</h3><span>RARO</span><b>🪙 1,500</b><button data-buy data-name="Efecto Estrella" data-price="1500">COMPRAR</button></article>
+  <article class="item panel" data-item="Avatar Guerrero"><div>🧙</div><h3>Avatar Guerrero</h3><span>LEGENDARIO</span><b>🪙 6,000</b><button data-buy data-name="Avatar Guerrero" data-price="6000">COMPRAR</button></article>
+  <article class="item panel" data-item="Fondo Atardecer"><div>🌅</div><h3>Fondo Atardecer</h3><span>ÉPICO</span><b>🪙 4,000</b><button data-buy data-name="Fondo Atardecer" data-price="4000">COMPRAR</button></article>
+  <article class="item panel" data-item="Título Sabio"><div>🏆</div><h3>Título Sabio</h3><span>LEGENDARIO</span><b>🪙 10,000</b><button data-buy data-name="Título Sabio" data-price="10000">COMPRAR</button></article>
+  <article class="item panel" data-item="Insignia Ciencia"><div>🔬</div><h3>Insignia Ciencia</h3><span>RARO</span><b>🪙 1,200</b><button data-buy data-name="Insignia Ciencia" data-price="1200">COMPRAR</button></article>
+  <article class="item panel" data-item="Marco Estelar"><div>🌟</div><h3>Marco Estelar</h3><span>ÉPICO</span><b>🪙 3,000</b><button data-buy data-name="Marco Estelar" data-price="3000">COMPRAR</button></article>
+  <article class="item panel" data-item="Título Maestro"><div>👑</div><h3>Título Maestro</h3><span>LEGENDARIO</span><b>🪙 12,000</b><button data-buy data-name="Título Maestro" data-price="12000">COMPRAR</button></article>
+</section>
+</div>
+
+<!-- RANKING -->
+<div id="rankingView" class="view hidden">
+<section class="page-head panel"><button class="back-btn" data-view="home">←</button><div><h1>RANKINGS</h1><span>Tu posición se recalcula automáticamente cada vez que cambia tu EXP.</span></div></section>
+<div class="ranking panel">
+<div class="ranking-tabs"><button class="active">MUNDIAL</button><button>NACIONAL</button><button>SEMANAL</button></div>
+<div id="rankingRows"></div>
+</div>
+</div>
+
+<!-- MISSIONS -->
+<div id="missionsView" class="view hidden">
+<section class="page-head panel"><button class="back-btn" data-view="home">←</button><div><h1>🎯 MISIONES DIARIAS</h1><span>Se reinician automáticamente cada día.</span></div><strong id="missionDate"></strong></section>
+<div class="mission-list">
+<article class="mission-large panel"><div>📚</div><div><h2>Explorador diario</h2><p>Responde 10 preguntas correctamente.</p><div class="progress"><i id="m1Bar"></i></div><span id="m1Text">0 / 10</span></div><strong>+200 EXP<br>🪙 500</strong><button id="claimM1" class="claim-btn">RECLAMAR</button></article>
+<article class="mission-large panel"><div>🔥</div><div><h2>Racha de conocimiento</h2><p>Alcanza una racha de 10 respuestas correctas.</p><div class="progress"><i id="m2Bar"></i></div><span id="m2Text">0 / 10</span></div><strong>+300 EXP</strong><button id="claimM2" class="claim-btn">RECLAMAR</button></article>
+<article class="mission-large panel"><div>🌎</div><div><h2>Ciudadano del mundo</h2><p>Responde preguntas correctas de 3 categorías diferentes.</p><div class="progress"><i id="m3Bar"></i></div><span id="m3Text">0 / 3</span></div><strong>🪙 750</strong><button id="claimM3" class="claim-btn">RECLAMAR</button></article>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
