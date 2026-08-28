@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1,
+    "category": "Ciencia",
+    "question": "¿Cuál es el elemento químico más abundante en el universo?",
+    "options": [
+      "Helio",
+      "Hidrógeno",
+      "Oxígeno",
+      "Carbono"
+    ],
+    "answer": 1,
+    "explanation": "El hidrógeno es el elemento químico más abundante del universo."
+  },
+  {
+    "id": 2,
+    "category": "Historia",
+    "question": "¿En qué año llegó Cristóbal Colón a América?",
+    "options": [
+      "1492",
+      "1519",
+      "1521",
+      "1453"
+    ],
+    "answer": 0,
+    "explanation": "La llegada de Colón a América ocurrió en 1492."
+  },
+  {
+    "id": 3,
+    "category": "Geografía",
+    "question": "¿Cuál es el océano más grande del planeta?",
+    "options": [
+      "Atlántico",
+      "Índico",
+      "Pacífico",
+      "Ártico"
+    ],
+    "answer": 2,
+    "explanation": "El océano Pacífico es el más grande de la Tierra."
+  },
+  {
+    "id": 4,
+    "category": "Ciencia",
+    "question": "¿Cuál es el planeta más cercano al Sol?",
+    "options": [
+      "Venus",
+      "Mercurio",
+      "Marte",
+      "Júpiter"
+    ],
+    "answer": 1,
+    "explanation": "Mercurio es el planeta más cercano al Sol."
+  },
+  {
+    "id": 5,
+    "category": "Matemáticas",
+    "question": "¿Cuánto es 12 × 8?",
+    "options": [
+      "86",
+      "92",
+      "96",
+      "108"
+    ],
+    "answer": 2,
+    "explanation": "12 multiplicado por 8 es igual a 96."
+  },
+  {
+    "id": 6,
+    "category": "Ciencia",
+    "question": "¿Qué gas necesitan principalmente las plantas para realizar la fotosíntesis?",
+    "options": [
+      "Oxígeno",
+      "Nitrógeno",
+      "Dióxido de carbono",
+      "Helio"
+    ],
+    "answer": 2,
+    "explanation": "Las plantas utilizan dióxido de carbono, agua y luz para la fotosíntesis."
+  },
+  {
+    "id": 7,
+    "category": "Literatura",
+    "question": "¿Quién escribió Don Quijote de la Mancha?",
+    "options": [
+      "Miguel de Cervantes",
+      "Gabriel García Márquez",
+      "Lope de Vega",
+      "Pablo Neruda"
+    ],
+    "answer": 0,
+    "explanation": "Don Quijote de la Mancha fue escrito por Miguel de Cervantes."
+  },
+  {
+    "id": 8,
+    "category": "Geografía",
+    "question": "¿Cuál es la capital de México?",
+    "options": [
+      "Guadalajara",
+      "Monterrey",
+      "Ciudad de México",
+      "Puebla"
+    ],
+    "answer": 2,
+    "explanation": "La capital de México es Ciudad de México."
+  },
+  {
+    "id": 9,
+    "category": "Ciencia",
+    "question": "¿Cuál es el órgano principal del sistema circulatorio?",
+    "options": [
+      "Pulmón",
+      "Corazón",
+      "Hígado",
+      "Riñón"
+    ],
+    "answer": 1,
+    "explanation": "El corazón bombea la sangre por todo el organismo."
+  },
+  {
+    "id": 10,
+    "category": "Cultura",
+    "question": "¿Cuántos lados tiene un hexágono?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": 1,
+    "explanation": "Un hexágono tiene seis lados."
+  },
+  {
+    "id": 11,
+    "category": "Geografía",
+    "question": "¿Cuál es el continente más grande?",
+    "options": [
+      "África",
+      "Europa",
+      "Asia",
+      "Oceanía"
+    ],
+    "answer": 2,
+    "explanation": "Asia es el continente más grande por superficie."
+  },
+  {
+    "id": 12,
+    "category": "Ciencia",
+    "question": "¿Qué planeta es conocido como el planeta rojo?",
+    "options": [
+      "Marte",
+      "Saturno",
+      "Neptuno",
+      "Venus"
+    ],
+    "answer": 0,
+    "explanation": "Marte recibe ese nombre por el color rojizo de su superficie."
+  },
+  {
+    "id": 13,
+    "category": "Historia",
+    "question": "¿Cuál de estas civilizaciones construyó Chichén Itzá?",
+    "options": [
+      "Maya",
+      "Inca",
+      "Romana",
+      "Egipcia"
+    ],
+    "answer": 0,
+    "explanation": "Chichén Itzá es una antigua ciudad maya."
+  },
+  {
+    "id": 14,
+    "category": "Matemáticas",
+    "question": "¿Cuál es la raíz cuadrada de 81?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "answer": 2,
+    "explanation": "9 × 9 = 81."
+  },
+  {
+    "id": 15,
+    "category": "Ciencia",
+    "question": "¿Qué fuerza mantiene a los planetas en órbita alrededor del Sol?",
+    "options": [
+      "Magnetismo",
+      "Gravedad",
+      "Fricción",
+      "Electricidad"
+    ],
+    "answer": 1,
+    "explanation": "La gravedad del Sol mantiene a los planetas en sus órbitas."
+  }
+]
