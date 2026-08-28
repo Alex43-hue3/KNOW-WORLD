@@ -7,6 +7,6 @@ window.KNOW_WORLD_AUDIO = {
   coin: "",        // monedas/compra
   reward: "",      // recompensa/misión
   equip: "",       // equipar artículo
-  volume: 0.55,
-  musicVolume: 0.18
+  volume: 1.55,
+  musicVolume: 10.18
 };
