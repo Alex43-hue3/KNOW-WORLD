@@ -1,9 +1,0 @@
-{
-  "name": "know-world",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Recreaci\u00f3n funcional de Know World con preguntas almacenadas en JSON.",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
